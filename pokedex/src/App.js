@@ -1,8 +1,10 @@
+import Router from "./Router/Router"
+import React from "react"
 
-function App() {
+const App = () => {
   return (
     <div >
-      <h1>Pokedex</h1>
+      <Router/>
     </div>
   );
 }
