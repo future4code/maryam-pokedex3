@@ -10,59 +10,69 @@ import Typography from '@mui/material/Typography';
 
 
 const Cards = () => {
-    const [pokeList, setPokeList] = useState([]); 
+    const url = id => `https://pokeapi.co/api/v2/pokemon/${id}`
+    const pokemon = []
+    
+    for(let i = 1; i <= 30; i++){
+      pokemon.push(fetch(url(i)).then(response => response.json()))
+    }
 
-    useEffect (() =>{
-
-        axios
-        .get("https://pokeapi.co/api/v2/pokemon/?&limit=20")
-        .then((res) => {
-            setPokeList(res.data.results)
-        })
-        .catch((err) =>{
-            console.log(err)
-        })
-    },[])
-
-
-   
-
-    const cardPokemon = pokeList.map((card) => {
-            return <ContainerCard>
-
-<Card sx={{ maxWidth: 345 }}>
-      <CardMedia
-        component="img"
-        height="140"
-        image="/static/images/cards/contemplative-reptile.jpg"
-        alt="Pokemon"
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          {card.name}
-        </Typography>
+    Promise.all(pokemon)
+    .then(pokemons => {
+      const listaDePokemons = pokemons.reduce((accumulator, pokemon) =>{
+        const types = pokemon.types.map(typeInfo => typeInfo.type.name)
+        accumulator += 
+        `<div "${types[0]}">
+          <h2> ${pokemon.id} .
+            ${pokemon.name} </h2>
         
-      </CardContent>
-      <CardActions>
-        <Button size="small">Adicionar</Button>
-        <Button size="small">Detalhes</Button>
-      </CardActions>
-    </Card>
-               
+        <img  alt="${pokemon.name}"  src="${pokemon.sprites.front_default}"/>
+        </div>`
 
-   
-                <img alt="imagem pokemon" src={card.url}/>
-               
-                </ContainerCard>
-    })
+      return accumulator
+    }, '')
 
+    const div = document.querySelector('[data-js="pokedex"]')
+    div.innerHTML = listaDePokemons
+   })
 
-   
+  
     return(
         <Container>
-            {cardPokemon}
+        <div data-js="pokedex" class='pokedex'></div>
         </Container>
     )
-}
 
+}
 export default Cards
+
+
+ // const cardPokemon = pokemon.map((card) => {
+    //         return <ContainerCard>
+
+    //   <Card sx={{ maxWidth: 345 }}>
+    //   <CardMedia
+    //     component="img"
+    //     height="140"
+    //     image="/static/images/cards/contemplative-reptile.jpg"
+    //     alt="Pokemon"
+    //   />
+    //   <CardContent>
+    //     <Typography gutterBottom variant="h5" component="div">
+    //       {card.name}
+    //     </Typography>
+        
+    //   </CardContent>
+    //   <CardActions>
+    //     <Button size="small">Adicionar</Button>
+    //     <Button size="small">Detalhes</Button>
+    //   </CardActions>
+    // </Card>
+               
+    //             <img alt="imagem pokemon" src={card.url}/>
+               
+    //             </ContainerCard>
+    // })
+
+
+   
