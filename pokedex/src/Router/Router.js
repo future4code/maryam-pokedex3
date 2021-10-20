@@ -3,9 +3,10 @@ import Home from "../pages/Home/Home"
 import Pokedex from "../pages/Pokedex/Pokedex"
 import DetalheDoPokemon from "../pages/DetalheDoPokemon/DetalheDoPokemon";
 import React from "react";
-
+import {useHistory} from "react-router-dom"
 
 const Router = () => {
+  const history = useHistory()
   return (
    
       <BrowserRouter>

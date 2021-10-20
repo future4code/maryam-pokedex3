@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
 import { Container, ContainerCard } from "./styled";
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -24,6 +23,7 @@ const Cards = () => {
             console.log(err)
         })
     },[])
+
 
    
 
@@ -49,10 +49,13 @@ const Cards = () => {
       </CardActions>
     </Card>
                
+
+   
                 <img alt="imagem pokemon" src={card.url}/>
                
                 </ContainerCard>
     })
+
 
    
     return(
