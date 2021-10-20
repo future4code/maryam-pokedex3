@@ -17,6 +17,9 @@ const Cards = () => {
         })
     },[])
 
+     // sprites.versions['generation-v']['black-white'].animated.front_default
+
+
     const cardPokemon = cardsPokemon.map((card) => {
             return<Container>
             <ContainerCard>
@@ -29,6 +32,7 @@ const Cards = () => {
                 </ContainerCard>
                 </Container>
     })
+
 
    
     return(
