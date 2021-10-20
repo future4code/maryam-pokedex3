@@ -1,19 +1,22 @@
 import React from 'react'
 import {useHistory} from "react-router-dom"
-
+import Header from "../../components/Header/Header"
 
 const Pokedex =() => {
     const history = useHistory()
 
-    const goToHome = () =>{
+   const goToHome = () =>{
         history.push("/")
-    }
+    } 
 
     return (
         <div>
-            <h1>Pokedex</h1>
-            <button onClick={goToHome}>Ir para Detalhe</button>
+            <Header
+        titulo={"Pokedex"}
+        mudarPag={() => goToHome(history)}
+      />
         </div>
     )
 }
 export default Pokedex
+

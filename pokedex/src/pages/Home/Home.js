@@ -1,6 +1,7 @@
 import React from 'react'
 import {useHistory} from "react-router-dom"
 import Cards from '../../components/Cards'
+import Header from "../../components/Header/Header"
 
 const Home =() => {
     const history = useHistory()
@@ -12,10 +13,12 @@ const Home =() => {
   
     return (
         <div>
-            <h1>Home</h1>
+           <Header
+        titulo={"Lista de Pokemons"}
+        mudarPag={() => goToPokedex(history)}
+      />
+           
             <Cards/>
-            <button onClick={goToPokedex}>Ir para Pokedex</button>
-
         </div>
     )
 }
