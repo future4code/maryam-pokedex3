@@ -13,8 +13,9 @@ const Home =() => {
     return (
         <div>
             <h1>Home</h1>
-            <Cards/>
             <button onClick={goToPokedex}>Ir para Pokedex</button>
+            <Cards/>
+          
 
         </div>
     )

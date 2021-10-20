@@ -1,40 +1,64 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+
 import { Container, ContainerCard } from "./styled";
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+
 
 const Cards = () => {
-    const [cardsPokemon, setCardsPokemon] = useState([]);
+    const [pokeList, setPokeList] = useState([]); 
 
     useEffect (() =>{
+
         axios
-        .get("https://pokeapi.co/api/v2/pokemon/?limit=20&offset=20")
+        .get("https://pokeapi.co/api/v2/pokemon/?&limit=20")
         .then((res) => {
-            console.log(res.data)
-            setCardsPokemon(res.data.results)
+            setPokeList(res.data.results)
         })
         .catch((err) =>{
             console.log(err)
         })
     },[])
 
-    const cardPokemon = cardsPokemon.map((card) => {
-            return<Container>
-            <ContainerCard>
-                <h3>{card.name}</h3>
+   
+
+    const cardPokemon = pokeList.map((card) => {
+            return <ContainerCard>
+
+<Card sx={{ maxWidth: 345 }}>
+      <CardMedia
+        component="img"
+        height="140"
+        image="/static/images/cards/contemplative-reptile.jpg"
+        alt="Pokemon"
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          {card.name}
+        </Typography>
+        
+      </CardContent>
+      <CardActions>
+        <Button size="small">Adicionar</Button>
+        <Button size="small">Detalhes</Button>
+      </CardActions>
+    </Card>
+               
                 <img alt="imagem pokemon" src={card.url}/>
-                <div>
-                    <button>Adicionar</button>
-                    <button>Detalhes</button>
-                </div>
+               
                 </ContainerCard>
-                </Container>
     })
 
    
     return(
-        <div>
+        <Container>
             {cardPokemon}
-        </div>
+        </Container>
     )
 }
 
