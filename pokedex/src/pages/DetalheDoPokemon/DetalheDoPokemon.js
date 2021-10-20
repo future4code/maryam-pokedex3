@@ -1,4 +1,5 @@
 import React from "react";
+
 import { useHistory } from "react-router-dom";
 
 const DetalheDoPokemon = () => {
@@ -8,7 +9,7 @@ const DetalheDoPokemon = () => {
 //     history.push("/pokedex");
 //   };
   return (
-    <div>
+    <div> 
       <h1>Detalhes</h1>
       {/* <button onClick={goToPokedex}>Ir para Pokedex</button> */}
     </div>

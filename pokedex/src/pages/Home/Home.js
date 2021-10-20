@@ -13,12 +13,14 @@ const Home =() => {
   
     return (
         <div>
+
            <Header
         titulo={"Lista de Pokemons"}
         mudarPag={() => goToPokedex(history)}
       />
            
             <Cards/>
+
         </div>
     )
 }
