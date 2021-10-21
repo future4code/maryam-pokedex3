@@ -10,36 +10,12 @@ import Typography from '@mui/material/Typography';
 
 
 const Cards = () => {
-    const url = id => `https://pokeapi.co/api/v2/pokemon/${id}`
-    const pokemon = []
     
-    for(let i = 1; i <= 30; i++){
-      pokemon.push(fetch(url(i)).then(response => response.json()))
-    }
-
-    Promise.all(pokemon)
-    .then(pokemons => {
-      const listaDePokemons = pokemons.reduce((accumulator, pokemon) =>{
-        const types = pokemon.types.map(typeInfo => typeInfo.type.name)
-        accumulator += 
-        `<div "${types[0]}">
-          <h2> ${pokemon.id} .
-            ${pokemon.name} </h2>
-        
-        <img  alt="${pokemon.name}"  src="${pokemon.sprites.front_default}"/>
-        </div>`
-
-      return accumulator
-    }, '')
-
-    const div = document.querySelector('[data-js="pokedex"]')
-    div.innerHTML = listaDePokemons
-   })
 
   
     return(
         <Container>
-        <div data-js="pokedex" class='pokedex'></div>
+        
         </Container>
     )
 
