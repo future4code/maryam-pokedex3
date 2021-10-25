@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import axios from "axios";
 import CardHome from "../../components/Card/CardHome";
+import { ContainerCard } from "./styled";
 
 const Home = () => {
   const history = useHistory();
@@ -48,30 +49,18 @@ const Home = () => {
           {loading ? (
             <h1>Loading...</h1> 
             ) : (
-              <div>
+              <ContainerCard>
                 {pokemon.map(poke =>(
                   <div key={poke.data.name}>
-                      <Cards pokemon={poke.data}/>
+                      <CardHome pokemon={poke.data}/>
                   </div>
                 ))}
-              </div>
+              </ContainerCard>
           )}
         </div>
 
 
-        {loading ? (
-            <h1>Carregando...</h1> 
-            ) : ( <div>
-
-      {pokemon.map(card => (
-        <div 
-        key={card.data.name}>
-          <CardHome 
-          pokemon={card.data} />
-        </div>
-      ))}
-    </div>
-    )}
+       
 
     </div>
   );
