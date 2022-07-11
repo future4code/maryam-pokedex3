@@ -14,3 +14,8 @@ O que não funciona:
 
 Item 3
 Item 4
+
+Site usados para ajudar a elaboração do site
+
+Cores
+https://www.canva.com/colors/color-palettes/pulp-slices/
