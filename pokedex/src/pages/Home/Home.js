@@ -2,10 +2,17 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import CardHome from "../../components/Card/CardHome";
 import { ContainerCard } from "./styled";
+import Header from "../../components/header/header";
+import {useHistory} from "react-router-dom"
 
 function Home() {
   const [pokemon, setPokemon] = useState([]);
   const [loading, setLoading] = useState(true)
+  const history = useHistory()
+
+  const goToPokedex = () =>{
+       history.push("/pokedex")
+   }
 
   const getImg = async () => {
     let pokemonArray = [];
@@ -27,7 +34,13 @@ function Home() {
 
   return (
     <div>
-      {loading ? (
+
+      <Header
+        titulo={"Pokedex"}
+        mudarPag={() => goToPokedex(history)}
+      />
+
+      {/* {loading ? (
         <h1>Loading...</h1>
       ) : (
         <ContainerCard>
@@ -37,7 +50,7 @@ function Home() {
             </div>
           ))}
         </ContainerCard>
-      )}
+      )} */}
     </div>
   );
 };
