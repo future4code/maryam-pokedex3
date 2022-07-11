@@ -1,6 +1,6 @@
 import React from 'react'
 import {useHistory} from "react-router-dom"
-import Header from "../../components/Header/Header"
+import Header from "../../components/header/header"
 
 const Pokedex =() => {
     const history = useHistory()

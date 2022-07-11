@@ -1,5 +1,6 @@
 import Router from "./Router/Router"
 import React from "react";
+// import Header from "./components/header/header.js";
 
 const App = () => {
 
@@ -7,7 +8,8 @@ const App = () => {
   return (
 
     <>
-       <Router/>   
+      {/* <Header/> */}
+      <Router/>   
     </>
     
   );
